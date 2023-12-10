@@ -17,7 +17,8 @@ namespace IActionResultExample.Controllers
         // This is 'IActionResult' take place. Notice to each return statement we write,
         // there are different types of object we return by 'Content()' and 'File()'. They are 'ContentResult' and 'VirtualFileResult'
         // We bridge them by returning both of their parent, that is 'IActionResult' interface
-        [Route("book")]
+
+        [Route("book")] //Url:  /book?bookid=1&isloggedin=true
         public IActionResult Index()
         {
             // Book id should be supplied

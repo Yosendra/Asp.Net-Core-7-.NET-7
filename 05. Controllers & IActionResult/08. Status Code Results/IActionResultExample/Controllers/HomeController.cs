@@ -20,7 +20,7 @@ namespace IActionResultExample.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("book")]     //  /book?bookid=1&isloggedin=true
+        [Route("book")] //Url:  /book?bookid=1&isloggedin=true
         public IActionResult Index()
         {
             // Book id should be supplied
