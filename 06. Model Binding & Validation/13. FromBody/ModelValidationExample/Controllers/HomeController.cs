@@ -15,7 +15,7 @@ public class HomeController : Controller
     //      "Email": "scott@example.com"
     //   }
 
-[Route("register")]
+    [Route("register")]
     public IActionResult Index([FromBody] Person person) // This enable to parse json format text and convert it to 'Person' model object
     {
         if (!ModelState.IsValid)
