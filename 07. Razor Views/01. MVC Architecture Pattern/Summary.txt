@@ -1,0 +1,50 @@
+Model-View-Controller (MVC) Pattern
+  is an architectural pattern that seperates application code into three components: Model, View, & Controller
+
+View -> Model <- Controller -> View | -> (depends to)
+
+Sequence:
+1. Controller -> Model
+2. Controller -> View
+3. View -> Model
+
+Two Types of Model :
+ Business Model 
+  -> service class that perform business logic or business operation and business validation
+ View Model 
+  -> model class only contain data which want to be viewed in the View. Class which contain only can be mentioned as POCO class
+
+1. Controller invokes Business Model
+2. Controller creates object of View Model
+3. Controller invokes View
+4. View accesses View Model
+
+Responsibility of Model-View-Controller by Sequence
+ Controller
+  - Receive HTTP request data
+  - Invoke business model to execute business logic
+
+ Business Model
+  - Receive input data from the controller
+  - Performs business operation such as retrieving / inserting data from database
+  - Sends data of the database, back to the controller
+
+ Controller
+  - Create objects of ViewModel and fills data into its properties
+  - Selects a View & invoke it and also pass the object of ViewModel to the view
+
+ View
+  - Receives the object of ViewModel from the controller
+  - Accesses properties of ViewModel to render data in html code
+  - After the view renders, the rendered view result will be sent as response
+
+Benefits / Goals of MVC achitectural pattern
+  Clean Seperation of Concerncs
+- Each component (model, view, controller) performs single responsibility
+- Identifying and fixing errors will be easy
+- Each component can be developed independently
+- In practical, both view and controller depend on the model
+  Model doesn't depend on neither view nor the controller
+  This is one of the key benefits of the 'clean seperation'
+  This seperation allows the model to be builts and tested independently
+- Unit testing each individual component is easier
