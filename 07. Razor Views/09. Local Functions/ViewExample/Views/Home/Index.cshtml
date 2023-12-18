@@ -1,0 +1,75 @@
+﻿@using ViewExample.Models
+
+@{
+    string appTitle = "Asp.NET Core Demo App";
+    List<Person> people = new()
+    {
+        new Person()
+        {
+            Name = "John", DateOfBirth = DateTime.Parse("2000-12-12"), Gender = PersonGender.Male,
+        },
+        new Person()
+        {
+            Name = "Mary", DateOfBirth = DateTime.Parse("1996-8-17"), Gender = PersonGender.Female,
+        },
+    };
+
+    double? GetAge(DateTime? dateOfBirth)    // Local Function
+    {
+        if (dateOfBirth.HasValue)
+        {
+            return Math.Round((DateTime.Now - dateOfBirth.Value).TotalDays / 365.25);
+        }
+
+        return null;
+    }
+}
+
+
+@functions{
+    // This 'GetAge2' will be compiled as method, not local function 'GetAge' as above. Hover on 'GetAge2'
+    double? GetAge2(DateTime? dateOfBirth)    // Local Function
+    {
+        if (dateOfBirth.HasValue)
+        {
+            return Math.Round((DateTime.Now - dateOfBirth.Value).TotalDays / 365.25);
+        }
+
+        return null;
+    }
+
+    // Meanwhile this will be compiled as field, not local variable. Hover on 'x'
+    int x = 10;
+
+    // There is no benefit create method and field in View page because we cannot reuse it
+    // and View are not intended to have much C# code
+    // Calculation, validation, and many logics is model's responsibility
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@appTitle</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Welcome</h1>
+        @for (int i = 0; i < 2; i++)
+        {
+            Person person = people[i];
+
+            <div>
+                @person.Name
+                <span>, </span>
+                <span>@person.Gender</span>
+
+                @if (person.DateOfBirth.HasValue)
+                {
+                    <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
+                    <span>@GetAge(person.DateOfBirth) years old</span>    @* Here, we call our local function, notice the Razor Expression Symbol (@) *@
+                }
+            </div>
+        }
+    </body>
+</html>
