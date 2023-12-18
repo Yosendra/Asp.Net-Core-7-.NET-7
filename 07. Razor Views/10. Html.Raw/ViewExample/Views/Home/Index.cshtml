@@ -1,0 +1,61 @@
+﻿@using ViewExample.Models
+
+@{
+    string appTitle = "Asp.NET Core Demo App";
+    List<Person> people = new()
+    {
+        new Person()
+        {
+            Name = "John", DateOfBirth = DateTime.Parse("2000-12-12"), Gender = PersonGender.Male,
+        },
+        new Person()
+        {
+            Name = "Mary", DateOfBirth = DateTime.Parse("1996-8-17"), Gender = PersonGender.Female,
+        },
+    };
+
+    double? GetAge(DateTime? dateOfBirth)
+    {
+        if (dateOfBirth.HasValue)
+        {
+            return Math.Round((DateTime.Now - dateOfBirth.Value).TotalDays / 365.25);
+        }
+
+        return null;
+    }
+
+    string alertMessage = @$"<script>alert('{people.Count} people found')</script>";   // This variable contain Javascript syntax
+}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@appTitle</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        @* if you call like this, the javascript will be printed as plain text *@
+        @* @alertMessage *@
+        @* Use this method with coution in real world project, especially when user provide the input *@
+        @Html.Raw(alertMessage)
+
+        <h1>Welcome</h1>
+        @for (int i = 0; i < 2; i++)
+        {
+            Person person = people[i];
+
+            <div>
+                @person.Name
+                <span>, </span>
+                <span>@person.Gender</span>
+
+                @if (person.DateOfBirth.HasValue)
+                {
+                    <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
+                    <span>@GetAge(person.DateOfBirth) years old</span>
+                }
+            </div>
+        }
+    </body>
+</html>
