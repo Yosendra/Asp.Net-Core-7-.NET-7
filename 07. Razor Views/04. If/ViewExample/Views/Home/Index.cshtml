@@ -1,0 +1,34 @@
+﻿@using ViewExample.Models
+
+@{
+    string appTitle = "Asp.NET Core Demo App";
+    Person person = new()
+    {
+        Name = "John",
+        // DateOfBirth = Convert.ToDateTime("2000-07-01"),
+        DateOfBirth = null,
+    };
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@appTitle</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Welcome</h1>
+        <h2>Hello, @person.Name</h2>
+        @if (person.DateOfBirth.HasValue)
+        {   
+            // Notice for nullable property, to access the actual value we access '.Value' property
+            double age = Math.Round((DateTime.Now - person.DateOfBirth).Value.TotalDays / 365.25);
+            // Notice, we can place html code in razor block
+            <h3>@age years old</h3>
+        } 
+        else
+        {
+            <h3>Date of birth is unknown</h3>
+        }
+    </body>
+</html>
