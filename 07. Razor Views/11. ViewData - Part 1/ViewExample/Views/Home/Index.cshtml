@@ -1,0 +1,30 @@
+﻿@using ViewExample.Models
+
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>@ViewData["appTitle"]</title>    @* ViewData is accessible in View *@
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Welcome</h1>
+        @{
+            List<Person> people = (List<Person>?)ViewData["people"] ?? new();
+        }
+
+        @foreach (var person in people)
+        {
+            <div>
+                @person.Name
+                <span>, </span>
+                <span>@person.Gender</span>
+
+                @if (person.DateOfBirth.HasValue)
+                {
+                    <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
+                }
+            </div>
+        }
+    </body>
+</html>
