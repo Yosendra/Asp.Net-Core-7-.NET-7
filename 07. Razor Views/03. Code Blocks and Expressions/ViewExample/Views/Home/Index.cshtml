@@ -1,0 +1,27 @@
+﻿@using ViewExample.Models   @* notice this *@
+
+@{
+    // Inside Razor Code Block, you can write any C# statement here
+    string appTitle = "Asp.NET Core Demo App";
+    Person person = new()
+    {
+        Name = "John",
+        DateOfBirth = Convert.ToDateTime("2000-07-01"),
+    };
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@appTitle</title> @* Use Razor Expression (@) to print C# variable at the title tag *@
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Welcome</h1>
+        <h2>Hello, @person.Name</h2>    @* notice this *@
+        @{
+            double age = Math.Round((DateTime.Now - person.DateOfBirth).TotalDays / 365.25);
+        }
+        <h3>@age years old</h3>
+    </body>
+</html>
