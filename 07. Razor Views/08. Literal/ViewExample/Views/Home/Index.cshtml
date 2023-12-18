@@ -1,0 +1,44 @@
+﻿@using ViewExample.Models
+
+@{
+    string appTitle = "Asp.NET Core Demo App";
+    List<Person> people = new()
+    {
+        new Person()
+        {
+            Name = "John", DateOfBirth = DateTime.Parse("2000-12-12"), Gender = PersonGender.Male,
+        },
+        new Person()
+        {
+            Name = "Mary", DateOfBirth = DateTime.Parse("1996-8-17"), Gender = PersonGender.Female,
+        },
+    };
+}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>@appTitle</title>
+        <meta charset="utf-8" />
+    </head>
+
+    <body>
+        <h1>Welcome</h1>
+        @for (int i = 0; i < 1; i++)
+        {
+            Person person = people[i];
+            <text>Hello to</text>   // Literal text, will not be read as C# syntax
+            // or you can do like this, only one line will be read as literal text
+            @* @:Hello to *@
+            <div>
+                @person.Name
+                <span>, </span>
+                <span>@person.Gender</span>
+
+                @if (person.DateOfBirth.HasValue)
+                {
+                    <span>@person.DateOfBirth.Value.ToString("MM/dd/yyyy")</span>
+                }
+            </div>
+        }
+    </body>
+</html>
