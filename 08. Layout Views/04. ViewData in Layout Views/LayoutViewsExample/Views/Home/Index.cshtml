@@ -1,0 +1,10 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    // Notice this lifetime of 'ViewData', it will still live in the Layout page according to sequence 
+    // of rendering of view (ViewImports -> ViewStart -> Controller View -> LayoutView)
+    // We use this 'ViewData["Title"]' at _Layout.cshtml
+    ViewData["Title"] = "Home";
+}
+
+<h1>Home</h1>
+<p>Welcome to home page</p>
