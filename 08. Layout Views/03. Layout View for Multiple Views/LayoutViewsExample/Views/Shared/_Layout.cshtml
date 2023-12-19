@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ASP.Net Core Demo Web App</title>
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-brand">AspNet Core App</div>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/about-company">About</a></li>
+                <li><a href="/contact-support">Contact</a></li>
+                <li><a href="/products">All Products</a></li>
+                <li><a href="/search-products">Search</a></li>
+                <li><a href="/order-products">Order</a></li>
+            </ul>
+        </div>
+
+        @{
+            // For testing only to enable put breakpoint
+            int x = 10;
+        }
+
+        <div class="page-content">
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
