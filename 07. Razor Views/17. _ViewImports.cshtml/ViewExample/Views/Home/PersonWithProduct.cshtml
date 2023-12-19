@@ -1,0 +1,52 @@
+﻿@* Can be deleted because we have already import it in _ViewImports.cshtml *@
+@* @using ViewExample.Models *@
+@model PersonAndProductWrapperModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Person Details</title>
+    <meta charset="utf-8" />
+    <link href="~/StyleSheet.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="page-content">
+        <h1>Person Details</h1>
+        
+        <div class="box w-100">
+            <h3>Person</h3>
+            <table class="table w-100">
+                <tbody>
+                    <tr>
+                        <td>Name</td>
+                        <td>@Model.PersonVM.Name</td>
+                    </tr>
+                    <tr>
+                        <td>Gender</td>
+                        <td>@Model.PersonVM.Gender</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="box w-100">
+            <h3>Product</h3>
+            <table class="table w-100">
+                <tbody>
+                    <tr>
+                        <td>Id</td>
+                        <td>@Model.ProductVM.Id</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>@Model.ProductVM.Name</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <a href="/home">Back to persons</a>
+    </div>
+</body>
+</html>
