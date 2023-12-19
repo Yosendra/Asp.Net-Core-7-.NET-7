@@ -1,0 +1,11 @@
+﻿@{
+    if (ViewBag.ProductId != null)  // If null, we use the layout we define in global _ViewStart.cshtml
+    {
+        Layout = "~/Views/Shared/_ProductLayout.cshtml";
+    }
+    
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Products</h1>
+<p>Search details here</p>
