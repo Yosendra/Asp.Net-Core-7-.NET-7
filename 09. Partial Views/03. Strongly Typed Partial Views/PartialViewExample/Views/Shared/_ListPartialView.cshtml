@@ -1,0 +1,13 @@
+﻿
+@* Bind with model class using 'model' directive *@
+@model ListModel
+
+<div class="list-container">
+    <h3>@Model.Title</h3>                           @* Accessing through Model *@
+    <ul class="list">
+        @foreach (string item in Model.ListItems)   @* Accessing through Model *@
+        {
+            <li>@item</li>
+        }
+    </ul>
+</div>

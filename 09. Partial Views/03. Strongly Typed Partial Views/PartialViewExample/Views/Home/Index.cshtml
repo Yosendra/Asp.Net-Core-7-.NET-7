@@ -1,0 +1,14 @@
+﻿
+@{
+    // We define model class for partial view
+    ListModel listModel = new()
+    {
+        Title = "Coutries",
+        ListItems = { "USA", "Canada", "Germany", "India", }
+    };
+}
+
+<h1>Home</h1>
+
+@* Here we pass the model to partial view with model attribute *@
+<partial name="_ListPartialView" model="listModel" />
