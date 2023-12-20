@@ -1,0 +1,31 @@
+﻿
+<h1>Home</h1>
+<div class="box">
+    @* ViewData lives here, and its values also copied to the partial view *@
+    @* So we will have another one ViewData which we can use inside partial view *@
+    <partial name="_ListPartialView" />
+
+    @{
+        var myViewData = new ViewDataDictionary(ViewData);
+
+        myViewData["ListTitle"] = "Countries";
+        myViewData["ListItems"] = new List<string>
+        {
+            "USA",
+            "Canada",
+            "Germany",
+            "India",
+        };
+    }
+
+    <div class="box">
+        @* The partial view get the updated data *@
+        <partial name="_ListPartialView" />
+
+        @* This will accept 'myViewData' as the ViewData in the partial view *@
+        <partial name="_ListPartialView" view-data="myViewData" />
+    </div>
+
+    @* Notice, the updated title only affect in the partial view, it don't in the view *@
+    <h3>ListTitle in View: @ViewData["ListTitle"]</h3>
+</div>
