@@ -1,0 +1,28 @@
+﻿
+<h1>Home</h1>
+
+<button id="button-load" 
+        class="button button-blue-back" 
+        type="button"
+>Load Programming Language</button>
+
+<div class="box programming-language-content"></div>
+
+<script>
+    // page doesn't refresh, but execute javascript code on the browser itself
+    document
+        .querySelector("#button-load")
+        .addEventListener("click", async function (){   // Notice we put async in the callback because we use await inside it
+            
+            // make an asynchronous request with fetch API. In Javascript fetch function 
+            // (which also called as fetch API) is used to make a request
+
+            // More details at MDN documentation about fetch API
+            let response = await fetch("Programming-Language") // response will contain http response object
+            let content = await response.text()
+            
+            document
+                .querySelector(".programming-language-content")
+                .innerHTML = content;
+        })
+</script>
