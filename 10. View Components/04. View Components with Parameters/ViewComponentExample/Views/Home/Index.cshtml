@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "Home";
+}
+
+<h1>Home</h1>
+
+@{
+    PersonGridModel personGridModel = new()
+    {
+        Title = "Persons",
+        Persons =
+        {
+            new Person() { Name = "John", JobTitle = "Manager" },
+            new Person() { Name = "Jones", JobTitle = "Assistant Manager" },
+            new Person() { Name = "William", JobTitle = "Clerk" },
+        }
+    };
+}
+
+@* Passsing anonymous object as the argument, 
+   this argument will be used in GridViewComponent class.
+   Notice anonymous object is quiet unique in its definition. *@
+@await Component.InvokeAsync("Grid", new { model = personGridModel })
