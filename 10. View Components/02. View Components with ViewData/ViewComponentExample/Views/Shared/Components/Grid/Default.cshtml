@@ -1,0 +1,26 @@
+﻿
+<div class="box">
+    
+    @* Access the ViewData with ViewBag *@
+    <h3>@ViewBag.Grid.GridTitle</h3>
+
+    <table class="table w-100">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Job Title</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @* Don't forget to import the model's namespace at _ViewImports *@
+            @foreach (Person person in ViewBag.Grid.Persons)
+            {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.JobTitle</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
