@@ -1,0 +1,18 @@
+﻿@model IEnumerable<string>
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h1>Citites</h1>
+<ul class="list">
+    @foreach (string city in Model)
+    {
+        <li>@city</li>
+    }
+</ul>
+
+@* Viewing service instance id, refresh at browser to see the changes of the values *@
+<div>Instance Service 1 : @ViewBag.InstanceId_CitiesService_1</div>
+<div>Instance Service 2 : @ViewBag.InstanceId_CitiesService_2</div>
+<div>Instance Service 3 : @ViewBag.InstanceId_CitiesService_3</div>
