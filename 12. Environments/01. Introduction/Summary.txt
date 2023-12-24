@@ -1,0 +1,10 @@
+Introduction to Environments
+  An environment represents a system in which the application is deployed and executed. 
+  ○ Development
+	The environment where the developer makes changes in the code, commits code to the source control
+  ○ Staging
+	The environment where the application runs on a server from which other developers 
+	and quality controlers (QA) access the application
+  ○ Production
+	The environment where the real end-users access the application.
+	Shortly, it's where the application "live" to the audience
