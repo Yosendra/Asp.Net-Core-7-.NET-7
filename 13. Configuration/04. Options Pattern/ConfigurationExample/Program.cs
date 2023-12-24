@@ -17,6 +17,8 @@
 //
 // The option class should be a non-abstract class with a public parameterless constructor
 // Public read-write properties are bound. Fields are not bound.
+//
+// Look at: WeatherApiOptions.cs, HomeController.cs
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
