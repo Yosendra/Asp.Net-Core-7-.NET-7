@@ -1,0 +1,47 @@
+﻿@model IEnumerable<string>
+
+@* Inject Service in View *@
+@inject ICitiesService citiesServiceInView
+
+@{
+    ViewBag.Title = "Home";
+}
+
+<h1>Citites</h1>
+@{
+    List<string> cititesFromServiceInView = citiesServiceInView.GetCities();
+}
+<ul class="list">
+    @* Iterate through 'cititesFromServiceInView' instead of Model *@
+    @foreach (string city in cititesFromServiceInView)
+    {
+        <li>@city</li>
+    }
+</ul>
+
+<table>
+    <tr>
+        <td>Instance Service 1</td>
+        <td>:</td>
+        <td>@ViewBag.InstanceId_CitiesService_1</td>
+    </tr>
+    <tr>
+        <td>Instance Service 2</td>
+        <td>:</td>
+        <td>@ViewBag.InstanceId_CitiesService_2</td>
+    </tr>
+    <tr>
+        <td>Instance Service 3</td>
+        <td>:</td>
+        <td>@ViewBag.InstanceId_CitiesService_3</td>
+    </tr>
+    <tr>
+        <td>Instance Service InView</td>
+        <td>:</td>
+        <td>@citiesServiceInView.ServiceInstanceId</td> @* Same service object injected in controller *@
+    </tr>
+</table>
+
+<div class="box">
+    <p>Instance Service InScope : @ViewBag.InstanceId_CitiesService_InScope</p>
+</div>
