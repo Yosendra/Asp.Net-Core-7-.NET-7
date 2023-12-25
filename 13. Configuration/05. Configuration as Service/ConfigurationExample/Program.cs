@@ -21,7 +21,7 @@ builder.Services.AddControllersWithViews();
 
 // Register configuration service class as 'WeatherApiOptions' object to DI container
 builder.Services.Configure<WeatherApiOptions>(
-    builder.Configuration.GetSection("MasterKey"));
+    builder.Configuration.GetSection("WeatherApi"));
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment() || app.Environment.IsStaging())
