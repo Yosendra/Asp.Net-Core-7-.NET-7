@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PersonResponse>
+
+@{
+    ViewBag.Title = "Person";
+}
+
+<form action="~/person/index" method="get">
+    <h1>Person</h1>
+
+    <div class="box flex">
+        <div class="flex-1">
+            @* Dropdown List *@
+            <select class="form-input" name="searchBy">
+                @foreach (var field in ViewBag.SearchFields)
+                {
+                    <option value="@field.Key">@field.Value</option>
+                }
+            </select>
+        </div>
+        <div class="flex-1">
+            @* 
+              When submitted, the parameter query will be:
+              ~/person/index?searchBy=name&keyword=searchString 
+            *@
+            <input type="search" id="Search" name="keyword" class="form-input" placeholder="Search" />
+        </div>
+        <div class="flex-1">
+            <button class="button button-blue-back">Search</button>
+            <a href="~/person/index" class="link-hover">Clear All</a>
+        </div>
+    </div>
+
+    <table class="table w-100 mt">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Country</th>
+                <th>Address</th>
+                <th>Receive News Letter</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.Email</td>
+                    <td>@person.DateOfBirth?.ToString("dd MMMM yyyy")</td>
+                    <td>@person.Age</td>
+                    <td>@person.Gender</td>
+                    <td>@person.CountryName</td>
+                    <td>@person.Address</td>
+                    <td>@person.ReceiveNewsLetters</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
