@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PersonResponse>
+
+@{
+    ViewBag.Title = "Person";
+}
+
+<form action="~/person/index" method="get">
+    <h1>Person</h1>
+
+    <div class="box flex">
+        <div class="flex-1">
+            @* Dropdown List *@
+            <select class="form-input" name="searchBy">
+                @foreach (var field in ViewBag.SearchFields)
+                {
+                    @* To persist the searchBy value in the form so it will be not be reset to Name category automatically *@
+                    if (field.Key == ViewBag.CurrentSearchBy)
+                    {
+                        <option value="@field.Key" selected="selected">@field.Value</option>
+                    }
+                    else
+                    {
+                        <option value="@field.Key">@field.Value</option>
+                    }
+                }
+            </select>
+        </div>
+        <div class="flex-1">
+            @* 
+              When submitted, the parameter query will be:
+              ~/person/index?searchBy=name&keyword=searchString 
+            *@
+            <input type="search" 
+                   id="Search" 
+                   name="keyword" 
+                   class="form-input" 
+                   placeholder="Search" 
+                   value="@ViewBag.CurrentKeyword" /> @* To persist the keyword value in the form so it will be not cleared automatically *@
+        </div>
+        <div class="flex-1">
+            <button class="button button-blue-back">Search</button>
+            <a href="~/person/index" class="link-hover">Clear All</a>
+        </div>
+    </div>
+
+    <table class="table w-100 mt">
+        <thead>
+            <tr>
+                @* Here add hyperlink to sort the list *@
+                <th>
+                    @if (ViewBag.CurrentSortBy == nameof(PersonResponse.Name) 
+                         && ViewBag.CurrentSortOrder == SortOrderEnum.ASC.ToString())
+                    {
+                        <a href="~/person/index?sortBy=@nameof(PersonResponse.Name)&sortOrder=@SortOrderEnum.DESC&searchBy=@ViewBag.CurrentSearchBy&keyword=@ViewBag.CurrentKeyword">Name</a>
+                        <i class="fa-solid fa-sort-up"></i> // use icon from font awesome
+                    }
+                    else if (ViewBag.CurrentSortBy == nameof(PersonResponse.Name) 
+                             && ViewBag.CurrentSortOrder == SortOrderEnum.DESC.ToString())
+                    {
+                        <a href="~/person/index?sortBy=@nameof(PersonResponse.Name)&sortOrder=@SortOrderEnum.ASC&searchBy=@ViewBag.CurrentSearchBy&keyword=@ViewBag.CurrentKeyword">Name</a>
+                        <i class="fa-solid fa-sort-down"></i> // use icon from font awesome
+                    }
+                    else // current sortBy maybe other than PersonName
+                    {
+                        <a href="~/person/index?sortBy=@nameof(PersonResponse.Name)&sortOrder=@SortOrderEnum.ASC&searchBy=@ViewBag.CurrentSearchBy&keyword=@ViewBag.CurrentKeyword">Name</a>
+                    }
+                </th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Age</th>
+                <th>Gender</th>
+                <th>Country</th>
+                <th>Address</th>
+                <th>Receive News Letter</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var person in Model)
+            {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.Email</td>
+                    <td>@person.DateOfBirth?.ToString("dd MMMM yyyy")</td>
+                    <td>@person.Age</td>
+                    <td>@person.Gender</td>
+                    <td>@person.CountryName</td>
+                    <td>@person.Address</td>
+                    <td>@person.ReceiveNewsLetters</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>
