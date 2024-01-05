@@ -1,0 +1,129 @@
+﻿@model PersonAddRequest     // notice this
+
+@{
+    ViewBag.Title = "Create Person";
+}
+
+<a asp-controller="person" asp-action="index" class="link-hover">Back to Person List</a>
+<h2>Create Person</h2>
+
+<div class="w-50">
+    <form asp-controller="person" asp-action="create" method="post">
+        @* Name *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Name" class="form-label pt">Name</label>
+            </div>
+            <div class="flex-1">
+                @* <input type="text" id="Name" name="Name" class="form-input" /> *@
+                <input asp-for="Name" class="form-input" />     @* After we define the model type in this view, then we can use the "asp-for" attribute *@
+            </div>
+        </div>
+
+        @* Email *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Email" class="form-label pt">Email</label>
+            </div>
+            <div class="flex-1">
+                @* <input type="text" id="Email" name="Email" class="form-input" /> *@
+                @* <input asp-for="Email" type="email" class="form-input" />   @* We override the tag type to email instead of the default type which is text *@
+                <input asp-for="Email" class="form-input" /> @* If we have defined the data type for email in model class, we need not to override the type value like above *@
+            </div>
+        </div>
+
+        @* DateOfBirth *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="DateOfBirth" class="form-label pt">Date of Birth</label>
+            </div>
+            <div class="flex-1">
+                @* <input type="date" id="DateOfBirth" name="DateOfBirth" class="form-input" /> *@
+                <input type="date" asp-for="DateOfBirth" class="form-input" /> @* Define the datatype of DateOfBirth at model class *@
+            </div>
+        </div>
+
+        @* Gender *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label">Gender</label>
+            </div>
+            <div class="flex-1">
+                @* 
+                <input type="radio" class="ml" id="Male" name="Gender" value="Male" />
+                <label for="Male">Male</label>
+
+                <input type="radio" class="ml" id="Female" name="Gender" value="Female" />
+                <label for="Female">Female</label> 
+                *@
+                
+                @{ string[] genders = Enum.GetNames<GenderOption>(); }
+                @foreach (string gender in genders)
+                {
+                    <input type="radio" class="ml" asp-for="Gender" id="@gender" value="@gender" />
+                    <label for="@gender">@gender</label>
+                }
+            </div>
+        </div>
+
+        @* Country *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label" asp-for="CountryId">Country</label>
+            </div>
+            <div class="flex-1">
+                @* <select name="CountryId" id="CountryId" class="form-input"> *@
+                <select asp-for="CountryId" class="form-input">
+                    <option value="">Please select...</option>
+                    @foreach (CountryResponse country in ViewBag.Countries)
+                    {
+                        <option value="@country.Id">@country.Name</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        @* Address *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Address" class="form-label pt">Address</label>
+            </div>
+            <div class="flex-1">
+                @* <textarea id="Address" name="Address" class="form-input"></textarea> *@
+                <textarea asp-for="Address" class="form-input"></textarea>
+            </div>
+        </div>
+
+        @* ReceiveNewsLetters *@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+            <div class="flex-1">
+                @* <input type="checkbox" id="ReceiveNewsLetters" name="ReceiveNewsLetters" value="true"> *@
+                <input asp-for="ReceiveNewsLetters" value="true"> @* Since ReceiveNewsLetters is a boolean type, we can remove type="checkbox" *@
+                <label asp-for="ReceiveNewsLetters" class="form-label">Receive News Letters</label>
+            </div>
+        </div>
+
+        @* Submit Button *@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+
+            <div class="flex-1">
+                <button class="button button-green-back">Create</button>
+                @if (ViewBag.Errors != null)
+                {
+                    <div class="text-red ml">
+                        <ul>
+                            @foreach (string error in ViewBag.Errors)
+                            {
+                                <li class="ml">@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+</div>
