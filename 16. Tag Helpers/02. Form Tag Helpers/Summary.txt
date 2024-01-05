@@ -1,0 +1,36 @@
+Tags Helpers
+
+Tag helpers are the classes that can be invoked as an html tag or html attribute.
+They generate a html tag or adds values into attributes of existing html tags.
+
+<input asp-for="ModelProperty">  --->  <input type="text" name="ModelProperty" id="ModelProperty" value="ModelProperty">
+
+Predefined Tag Helpers
+for <a>, <form> :
+  asp-controller
+  asp-action
+  asp-route-x
+  asp-route
+  asp-area
+for <input>, <textarea>, <label> :
+  asp-for
+for <select> :
+  asp-for
+  asp-items
+for <img> :
+  asp-append-version
+for <script> :
+  asp-fallback-src
+  asp-fallback-test
+for <span>
+  asp-validation-for
+for <div>
+  asp-validation-summary
+
+Advantages of Tag Helpers
+○ Binding
+  The form tags such as <input>, <label>, <textarea>, <select> can be bound with specific model properties.
+  It applies model property name to "name" and "id" attributes of <input> tag
+○ Url Generation
+  Route url's will be regenerated for <a> and <form> tags.
+  It generates the url as "controller/action" pattern.
