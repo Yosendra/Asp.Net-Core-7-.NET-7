@@ -1,0 +1,12 @@
+EFCore Approaches
+○ DbFirst Approach - DB generate Entity classes
+  - Suitable if you have an existing database or DB designed by DBAa, developed seperately
+  - Manual changes to DB can be done independently
+  - Stored procedure, indexes, triggers, etc., can be created with T-SQL independently
+  - Suitable for larger application and high data-intense applications
+
+○ CodeFirst Approach - Entity classes generate DB
+  - Suitable for newer databases
+  - Manual changes to DB will be most probably lost because your code defines the database
+  - Stored procedure are to be written as a part of C# code
+  - Suitable for smaller application or prototype-level application only, but not for larger or high data-intense applications
