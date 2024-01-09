@@ -1,0 +1,26 @@
+Entity Framework Core
+  is light-weight, extensible and cross-platform framework for accessing databases in .NET applications.
+  It is the most-used database framework for Asp.Net Core Apps.
+
+  .NET Core App ---> EntityFrameworkCore ---> Database
+
+EFCore Model
+
+  Model class                                          Database Table
+
+  public class ModelClass
+  {                                                    Table
+     public DataType PropertyName1 { get; set; } ----> - ColumnName1
+     public DataType PropertyName2 { get; set; } ----> - ColumnName2
+  }
+
+Pros & Cons of EFcore
+- Shorter Code
+  The CRUD operations / calling stored procedure are done with shorter amount of code than ADO.NET
+- Strongly-Typed
+  The columns as created properties in model class. 
+  So the intellisense offers columns of the table as peroperties, while writing the code.
+  Plus, the developer need not convert data type of values, it's automatically done by EFCore itself.
+- Performance
+  EFCore performs slower than ADO.NET
+  So ADO.NET or its alternatives (such as Dapper) are recommended for larger & high-traffic applications.
