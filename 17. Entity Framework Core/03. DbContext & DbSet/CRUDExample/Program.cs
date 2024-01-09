@@ -3,7 +3,20 @@ using Microsoft.EntityFrameworkCore;
 using ServiceContracts;
 using Services;
 
-/* Add DbContext as Service
+/* DbContext & DbSet
+ * 
+ * Custom DbContext class                                    SQL Server
+ * 
+ * public class CustomDbContext : DbContext -----------------> SQL Database
+ * {
+ *   public DbSet<ModelClass1> DbSet1 { get; set; } -----------> Table 1
+ *   public DbSet<ModelClass2> DbSet2 { get; set; } -----------> Table 2
+ * }
+ * 
+ * DbContext -> An instance of DbContext responsible to hold a set of DbSet and represent a connection with database.
+ * DbSet     -> Represent a single database's table, each column is represented as a model property.
+ * 
+ * Add DbContext as Service
  * 
  * in Program.cs
  * builder.Services.AddDbContext<DbContextClassName>(options => { options.UseSqlServer(); });
