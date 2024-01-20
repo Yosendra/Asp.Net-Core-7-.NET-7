@@ -1,0 +1,18 @@
+Best Practice of Unit Test
+ Isolated / Stand-alone
+  seperated from any other dependencies such as file system or database
+
+ Test single method at-a-time
+  should not test more than one method in a single test case
+
+ Unordered
+  can be executed in any order
+
+ Fast
+  tests should take little time to run (about few milliseconds)
+
+ Repeatable
+  tests can run repeatedly but should give same result, if no changes in the actual source code
+
+ Timely
+  time taken for writing a test case should not take longer time than the time taken for writing code that is being tested
