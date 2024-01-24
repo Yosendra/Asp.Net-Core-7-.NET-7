@@ -7,11 +7,20 @@ using Rotativa.AspNetCore;
  *   Inject ICountryRepository in CountryService constructor
  *   Change many implementation that involve data access logic through db, now, into repository
  *   
+ * Unit Testing
+ *   No Repository
+ *     Controller -> Service -> DbContext
+ *     Unit Test  -> Service -> DbContext Mock
+ *   
+ *   With Repository
+ *     Controller -> Service -> Repository -> DbContext
+ *     Controller -> Service -> Repository Mock
+ *   
  *   There is some unintended code in CountryServiceTest due to our changes to use Repository pattern.
- *   We need to mock the the repository, then inject it to the Service constructor
+ *   We need to mock the the repository, then inject the mock object to the Service constructor
  *   We will fix it later.
  *   
- *   Look at: 
+ *   Look at: CountryService.cs, CountryServiceTest.cs
  */
 
 var builder = WebApplication.CreateBuilder(args);
