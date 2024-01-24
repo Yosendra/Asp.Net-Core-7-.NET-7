@@ -1,0 +1,14 @@
+Benefit of Repository Pattern
+  Lossely-Coupled business logic (service) and data accsss logic. 
+  We can independently develop them.
+
+  Changing data store
+  We can easily change our application database, for example from SQL server to PostgreSQL
+  Not affecting business logic. We just only need to implement the repository interface used in the service.
+  We can create alternative repository implementation for another data store when needed
+
+  Unit testing
+  Mocking the repository is much easier (and preferred) than mocking DbContext
+
+Non-Benefit of Repository Pattern
+  It adds one layer in our application architecture design
