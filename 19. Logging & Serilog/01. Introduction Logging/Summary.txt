@@ -1,0 +1,8 @@
+Logging
+  is the process of recording run-time actions as they happen in real-time.
+  Helps us to understand the failures and performance bottlenecks of the application.
+
+  .NET Core App ---> Logging Framework ---> Logs (Console, Debug, EventLog, File, Database)
+
+  Logging Framework is the mediator between your application and the Logs
+  Logs are data store where the actual log messages are persisted.
