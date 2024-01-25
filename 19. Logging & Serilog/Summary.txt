@@ -1,0 +1,16 @@
+ILogger
+  Debug
+  ILogger.LogDebug("Log Message")		Logs that provide details & values of variables for debugging purpose
+
+  Information
+  ILogger.LogInformation("Log Message")		Logs that track the general flow of the application execution
+
+  Warning
+  ILogger.LogWarning("Log Message")		Logs that that highlight an abnormal or unexpected event
+
+  Error
+  ILogger.LogError("Log Message")		Logs to indicate that flow of execution is stopped due to a failure
+
+  Critical
+  ILogger.LogCritical("Log Message")		Logs to indicate an unrecoverable application crashj
+
