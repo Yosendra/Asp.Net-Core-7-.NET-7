@@ -1,4 +1,0 @@
-Filters
-  are the code block that execute before or after specific stages in "Filter Pipeline"
-  Filters perform specific task such as authorization, caching, exception handling, etc.
-
