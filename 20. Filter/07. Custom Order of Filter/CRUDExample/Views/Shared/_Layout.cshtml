@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/StyleSheet.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="navbar">
+            <div class="navbar-brand">
+                <img src="~/logo.png" width="50px" asp-append-version="true" />
+            </div>
+            <ul>
+                <li><a asp-controller="person" asp-action="index">Person</a></li>
+                <li><a asp-controller="country" asp-action="UploadFromExcel">Upload Country</a></li>
+            </ul>
+        </div>
+
+        <div class="page-content">
+            @RenderBody()
+        </div>
+    </div>
+
+    @RenderSection("script", required: false)
+</body>
+</html>
