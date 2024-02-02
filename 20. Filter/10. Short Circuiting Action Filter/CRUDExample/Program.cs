@@ -18,6 +18,9 @@ using Serilog;
 
   Insight of Short-Circuit : giving the result from the filter and preventing the action method from execution
 
+  Test this by putting breakpoint in PersonCreateAndEditPostActionFilter.OnActionExecutionAsync
+  Make a request to create a person with all empty input
+
 Look at: PersonCreateAndEditPostActionFilter.cs, PersonController.Create (POST), PersonController.Edit (POST), 
 */
 
