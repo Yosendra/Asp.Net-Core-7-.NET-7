@@ -1,0 +1,33 @@
+The browser make a request to the server, in this case it is Kestrel.
+It receive the request and forward the request to the request pipeline.
+Request pipeline is a series of middleware.
+
+Request -> Other Middleware1 -> Routing Middleware (action selection) -> Endpoint Middleware (action execution) -> Other Middleware2
+
+Inside the Endpoint Middleware is Filter Pipeline
+
+Filter Pipeline 
+Authorization Filter -> Resource Filter (Executing) -> Model Binding & Validation 
+-> Action Filter (Executing) -> Action method -> Action Filter (Executed) 
+-> Exception Filter -> Result Filter (Executing) -> IActionResult execution 
+-> Result Filter (Executed) -> Resource Filter (Executed)
+
+
+Filter [vs] Middleware
+Middleware
+  Middleware pipeline is a superset of filter pipeline, which contains the full-set of 
+  all middlewares added to the application builder in the application's startup code (Program.cs)
+
+  Middleware pipeline execute for all request
+
+  Middleware handles application-level functionality such as Logging, HTTPS redirection, Performance profiling, Exception handling,
+  Static Files, Authentication, etc, by accessing low-level abstraction such as HttpContext
+
+Filter
+  Filter pipeline is a subset of Middleware pipeline which executes under "Endpoint Middleware"
+
+  In addition, filter pipeline executes for request that reach "Endpoint Middleware"
+
+  Filters handle MVC-specific functionality such as manipulating or accessing ViewData, ViewBag, ModelState, Action result, 
+  Action parameters, etc
+
