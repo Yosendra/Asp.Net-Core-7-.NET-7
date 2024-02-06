@@ -1,0 +1,28 @@
+Dependency Problem
+Higher-level modules depend on lower-level modules.
+Means, both are tightly-coupled.
+
+• The developer of higher-level module SHOULD WAIT until the completion of development of lower-level module.
+• Require much code changes in to interchange an alternative lower-level module.
+• Any changes made in the lower-level module effect changes in the higher-level module.
+• Difficult to test a single module without effecting / testing the other module.
+
+
+Dependency Inversion Principle (DIP) is a design principle (guideline) which is a solution for the dependency problem.
+• "The higher-level module (clients) SHOULD NOT depend on low-level modules (dependencies).
+   Both should depend on abstractions (interface or abstract class)."
+• "Abstraction should not depend on details (both client and dependencies).
+   Details (both client and dependency) should depend on abstractions."
+
+at Compile Time:
+		  reference		      implements
+Controller (client) ---> Interface (abstraction) <--- Service (dependency)
+
+at Run Time
+		   calls
+Controller (client) ---> Service (dependency)
+
+• The interface is controlled by the client
+• Both client and dependency depend on abstraction
+
+
