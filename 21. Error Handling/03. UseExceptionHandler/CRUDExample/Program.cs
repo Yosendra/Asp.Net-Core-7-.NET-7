@@ -28,7 +28,7 @@ using Serilog;
 * In ExceptionHandlingMiddleware, in catch block, throw again the exception to be catched by built-in ErrorHandler middleware
 * so it can be redirected to our Error page we have created
 * 
-* Look at: appsettings.json, Program.cs, HomeController.cs
+* Look at: appsettings.json, Program.cs, HomeController.cs, ExceptionHandlingMiddleware.cs
 */
 
 var builder = WebApplication.CreateBuilder(args);
