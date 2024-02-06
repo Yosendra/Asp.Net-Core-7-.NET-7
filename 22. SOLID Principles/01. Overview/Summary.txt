@@ -1,0 +1,18 @@
+SOLID Principles
+"SOLID" is a set of five design patterns whose main focus is to create loosely coupled, flexible, maintainable code.
+Broad goal of SOLID Principles: Reduce dependencies of various classes / modules of the application.
+
+• Single Responsibility Principle (SRP)
+A software module or class should have one-and-only-one reason to change
+
+• Open-Closed Principle (OCP)
+A class is closed for modification, but open for extension
+
+• Dependency Injection Principle (DIP)
+High-Level modules should not depend on low-level modules. Both should depend upon abstraction
+
+• Liskov Substituion Principle (LSP)
+Subtypes must be substitutable for their base types
+
+• Interface Segregation Principle (ISP)
+No client class should be forced to depend on methods it does not use
