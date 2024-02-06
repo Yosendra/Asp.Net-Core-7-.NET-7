@@ -1,0 +1,28 @@
+Interface Segregation Principle
+Instead of writing one large interface with so many methods, we group them into multiple interfaces with fewer methods
+
+public interface Interface1
+{
+  void Method1(); // perform one task
+  void Method2(); // perform a different task
+}
+
+ -should be re-written as-
+
+public interface Interface1
+{
+  void Method1();
+}
+
+public interface Interface2
+{
+  void Method2();
+}
+
+
+No client class should be forced to depend on methods it doesn't use.
+We should prefer to make many smaller interface rather than one single big interface.
+
+• The client class may choose one or more interfaces to implement
+• Benefit: makes it easy to crete alternative implementation for a specific functionality, rather than recreating entire class
+
