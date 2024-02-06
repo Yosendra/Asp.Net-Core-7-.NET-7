@@ -1,0 +1,33 @@
+Single Responsibility Principle
+One class should provide only single functionality, not more than one.
+
+public class Class1
+{
+  // functionality1 & functionality2
+}
+
+ -should be re-written as-
+
+public class Class1
+{
+  // functionality1
+}
+
+public class Class2
+{
+  // functionality2
+}
+
+
+A class should have one-and-only-one reason to change.
+A class should implement only one functionality.
+
+• Avoid multiple / tightly coupled functionalities in a single class.
+• Benefits: makes the class independent of other classes in terms of its purpose / functionality.
+  So that the classes become easier to design, write, debug, maintain, and test.
+• Eg: a class that performs validation should only involve in validation.
+  But it should not read configuration settings from a configuration file.
+  But instead, it call a method of another class that reads configuration settings.
+		     call
+  Validator (class)  ---->   ConfigReader (class)
+  (only validation)	     (only reading configuration)
