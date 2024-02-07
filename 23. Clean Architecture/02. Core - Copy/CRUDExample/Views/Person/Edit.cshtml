@@ -1,0 +1,144 @@
+﻿@model PersonUpdateRequest
+
+@{
+    ViewBag.Title = "Edit Person";
+}
+
+<!-- Breadcrumb Starts -->
+<div class="flex">
+    <div class="flex-1">
+        <div class="text-grey">
+            <span>Contact</span>
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Person</span>
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Edit</span>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Ends -->
+
+<div class="form-container">
+    <a asp-controller="person" asp-action="index" class="link-hover">Back to Person List</a>
+    <h2 class="text-large">Edit Person</h2>
+
+    <form asp-controller="person" asp-action="edit" method="post">
+        @* id *@
+        <input type="hidden" asp-for="Id" />
+
+        @* Name *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Name" class="form-label pt">Name</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Name" class="form-input" />
+                <span asp-validation-for="Name" class="text-red"></span>
+            </div>
+        </div>
+
+        @* Email *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Email" class="form-label pt">Email</label>
+            </div>
+            <div class="flex-1">
+                <input asp-for="Email" class="form-input" />
+                <span asp-validation-for="Email" class="text-red"></span>
+            </div>
+        </div>
+
+        @* DateOfBirth *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="DateOfBirth" class="form-label pt">Date of Birth</label>
+            </div>
+            <div class="flex-1">
+                <input type="date" asp-for="DateOfBirth" class="form-input" />
+                <span asp-validation-for="DateOfBirth" class="text-red"></span>
+            </div>
+        </div>
+
+        @* Gender *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label">Gender</label>
+            </div>
+            <div class="flex-1">
+                @{ string[] genders = Enum.GetNames<GenderOption>(); }
+                @foreach (string gender in genders)
+                {
+                    <input type="radio" class="ml" asp-for="Gender" id="@gender" value="@gender" />
+                    <label for="@gender">@gender</label>
+                }
+                <span asp-validation-for="Gender" class="text-red"></span>
+            </div>
+        </div>
+
+        @* Country *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label" asp-for="CountryId">Country</label>
+            </div>
+            <div class="flex-1">
+                <select asp-for="CountryId" asp-items="@ViewBag.Countries" class="form-input">
+                    <option value="">Please select...</option>
+                </select>
+                <span asp-validation-for="CountryId" class="text-red"></span>
+            </div>
+        </div>
+
+        @* Address *@
+        <div class="form-field flex">
+            <div class="w-25">
+                <label asp-for="Address" class="form-label pt">Address</label>
+            </div>
+            <div class="flex-1">
+                <textarea asp-for="Address" class="form-input"></textarea>
+                <span asp-validation-for="Address" class="text-red"></span>
+            </div>
+        </div>
+
+        @* ReceiveNewsLetters *@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+            <div class="flex-1">
+                <input asp-for="ReceiveNewsLetters" value="true">
+                <label asp-for="ReceiveNewsLetters" class="form-label">Receive News Letters</label>
+                <span asp-validation-for="ReceiveNewsLetters" class="text-red"></span>
+            </div>
+        </div>
+
+        @* Submit Button *@
+        <div class="form-field flex">
+            <div class="w-25">
+            </div>
+
+            <div class="flex-1">
+                <button class="button button-green-back">Update</button>
+                <div asp-validation-summary="All" class="text-red"></div>
+                @if (ViewBag.Errors != null)
+                {
+                    <div class="text-red ml">
+                        <ul>
+                            @foreach (string error in ViewBag.Errors)
+                            {
+                                <li class="ml">@error</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            </div>
+        </div>
+    </form>
+</div>
+
+@section script {
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+        asp-fallback-src="~/jquery.min.js" asp-fallback-test="window.jQuery"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.4/jquery.validate.min.js"
+        asp-fallback-src="~/jquery.validate.min.js" asp-fallback-test="window.jQuery.validator"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"
+        asp-fallback-src="~/jquery.validate.unobtrusive.min.js" asp-fallback-test="window.jQuery.validator.unobstrusive"></script>
+}
