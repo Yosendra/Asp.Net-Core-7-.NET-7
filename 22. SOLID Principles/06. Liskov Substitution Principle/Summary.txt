@@ -1,0 +1,23 @@
+Liskov Substitution Principle (LSP)
+Functions that use references of base classes must be able to use objects of derived classes without breaking/changing its functionality.
+The child classes that override methods of base class should provide same behavior.
+
+Using object of parent class
+
+ParentClass variable = new ParentClass();
+variable.Method(); // executes ParentClass.Method
+
+ParentClass variable = new ChildClass();
+variable.Method(); // executes ChildClass.Method
+
+[Both methods should offer same functionality]
+
+
+If a defived class overrides a method of base class, then the method of derived class should provide same behavior:
+• With same input, it should provide same output (return value)
+• The child class's method should not introduce (throw) any new exception than what were thrown in the base implementation
+• The child class's method should not implement stricter rules than base class's implementation
+
+Benefit: prevent code to break - if by mistake or wantedly, someone has replaced the derived class with its base class
+(or even vice verca), as its behavior doesn't change.
+
