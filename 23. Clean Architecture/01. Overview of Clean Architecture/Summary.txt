@@ -1,0 +1,20 @@
+Clean Architecture
+Instead of "business logic" depend on "data access logic", this dependency is inverted; 
+that means; the "data access logic" depend on "business logic".
+
+Benefit: The business logic is highly clean-seperated, independent of data storage and UI, unit-testable.
+
+• Changing external system
+Allows you to change external system (external / third-party services) easily without affecting the application core
+
+• Database independent
+The application core doesn't depend on specific databases, so you can change it any time without affecting the application core
+
+• Scalable
+You can easily scale-up or scale-out without really affecting overall architecture of the application
+
+• Testable
+The application core doesn't depend on any other external APIs or repositories, so that you can write unit test against 
+business logic services easily by mocking essential repositories
+
+Clean Architecture is earlier named as "Hexagonal Architecture", "Onion Architecture", "Domain-Driven Design", "Vertical Slice Architecture". Over time, it is popular as "Clean Architecture"
