@@ -10,7 +10,7 @@ using Serilog;
 * Add AccountController
 * Add hyperlink in _Layout.cshtml
 * 
-* Look at: 
+* Look at: RegisterDto.cs, Register.cshtml, AccountController.cs
 */
 
 var builder = WebApplication.CreateBuilder(args);
