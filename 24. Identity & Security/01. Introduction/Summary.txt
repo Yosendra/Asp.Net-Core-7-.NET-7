@@ -1,0 +1,13 @@
+Introduction to Identity
+It is an API that manages users, passwords, profile data, role, tokens, email confirmation, external login, etc.
+It is by default built on top of EntityFrameworkCore: you can also create custom data store.
+
+Asp.Net Core App (Controller)
+	|
+Identity Manager (Business Logic)	Eg: UserManager, RoleManager
+	|
+Identity Store (Repository)		Eg: UserStore, RoleStore
+	|
+Identity DbContext (Data Access Logic)
+	|
+Data Source (Database)
