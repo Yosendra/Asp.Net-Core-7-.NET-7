@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Upload Country from Excel";
+}
+
+<!-- Breadcrumb Starts -->
+<div class="flex">
+    <div class="flex-1">
+        <div class="text-grey">
+            <span>Contact</span>
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Country</span>
+            <i class="fa-solid fa-caret-right"></i>
+            <span>Upload</span>
+        </div>
+    </div>
+</div>
+<!-- Breadcrumb Ends -->
+
+<div class="form-container">
+    <h2 class="text-large">Upload Country from Excel</h2>
+
+    @* encytype is a must for uploading data *@
+    <form asp-controller="Country" asp-action="UploadFromExcel" method="POST" enctype="multipart/form-data"> 
+        <div class="form-field flex">
+            <div class="w-25">
+                <label class="form-label">Choose an xlsx file</label>
+            </div>
+            <div class="flex-1">
+                <input type="file" name="excelFile" class="form-input" />
+                <div class="text-red">@ViewBag.ErrorMessage</div>
+                <div class="text-green">@ViewBag.Message</div>
+            </div>
+        </div>
+
+        <div class="form-field flex">
+            <div class="w-25"></div>
+            <div class="flex-1">
+                <button type="submit" class="button button-green-back">Upload</button>
+            </div>
+        </div>
+    </form>
+</div>
