@@ -1,0 +1,30 @@
+What is ASP.NET Core Web API?
+
+is a component (part) of ASP.NET Core which is used to create HTTP-based 
+RESTful services (also known as HTTP services) that can be consumed (invoked) 
+by wide range of client applications such as single-page web application, mobile application, etc.
+
+ASP.NET Core
+• MVC
+• Web API
+• Blazor
+• Razor Pages
+
+RESTful / Web API Services
+
+RESTful services (Representational State Transfer) is an architecture style that
+defines to create HTTP services that receives HTTP GET, POST, PUT, DELETE request;
+perform CRUD operations on the approriate data source; and returns JSON/XML data as
+response to the client.
+
+		   HTTP request
+Browser (Client) -----------------> Server
+XMLHttpRequest
+[or]		 		    Web API Controller
+fetch()
+		<-----------------
+		   HTTP response
+		   (Json / XML)
+
+The server is stateless. It not save client identity.
+The client should be then one showing his identity to the server.
