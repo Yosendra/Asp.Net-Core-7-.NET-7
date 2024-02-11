@@ -1,0 +1,7 @@
+﻿<h1>Admin Home</h1>
+
+@* 
+notice the area attribute is empty because we want to refer to regular Person.Index not Person.Index inside the Admin area
+since we write this in Admin area
+*@
+<a asp-controller="Person" asp-action="Index" asp-area="">Person</a>        
