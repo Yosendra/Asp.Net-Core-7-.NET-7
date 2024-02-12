@@ -29,7 +29,7 @@
 * Add the action method for TestController.
 * Run the application, the look at the address bar, also put breakpoint to test it
 * 
-* Look at: WeatherForecastController.cs, launchSettings.json
+* Look at: TestController.cs, launchSettings.json
 */
 
 var builder = WebApplication.CreateBuilder(args);
