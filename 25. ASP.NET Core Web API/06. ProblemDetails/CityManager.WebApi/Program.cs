@@ -9,9 +9,11 @@
 * Then -> "Update-Database"
 * Now name at City table is mandatory field in database reflects to EntityFramework
 * 
+* For validation error (on Model Binding process) we return ValidationProblemDetails object
+* We try to implement it in POST City, but actually it automatically done by ApiController
+* We write it just for learning purpose
 * 
-* 
-* Look at: CityController.cs (GET city),  
+* Look at: CityController.cs (GET & POST city),  
 */
 
 using CityManager.WebApi.Entities;
