@@ -10,10 +10,13 @@ namespace ContactManager.UI.Controllers;
 [Route("[controller]/[action]")]
 public class AccountController : Controller
 {
+    #region Fields
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly RoleManager<ApplicationRole> _roleManager;
+    #endregion
 
+    #region Constructor
     public AccountController(
         UserManager<ApplicationUser> userManager,
         SignInManager<ApplicationUser> signInManager,
@@ -23,12 +26,15 @@ public class AccountController : Controller
         _signInManager = signInManager;
         _roleManager = roleManager;
     }
+    #endregion
+
 
     [Authorize("NotAuthenticated")]
     public IActionResult Register()
     {
         return View();
     }
+
 
     [HttpPost]
     [Authorize("NotAuthenticated")]
@@ -83,6 +89,7 @@ public class AccountController : Controller
         return View();
     }
 
+
     [HttpPost]
     [Authorize("NotAuthenticated")]
     public async Task<IActionResult> Login(LoginDto loginDto, string? returnUrl)
@@ -118,12 +125,14 @@ public class AccountController : Controller
         }
     }
     
+
     [Authorize]
     public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("Index", "Person");
     }
+
 
     [AllowAnonymous]
     public async Task<IActionResult> IsEmailAlreadyRegistered(string email)

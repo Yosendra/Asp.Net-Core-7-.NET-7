@@ -17,10 +17,12 @@ public class CountryController : Controller
     }
     #endregion
 
+
     public IActionResult UploadFromExcel()
     {
         return View();
     }
+
 
     [HttpPost]
     public async Task<IActionResult> UploadFromExcel(IFormFile excelFile)
@@ -38,7 +40,6 @@ public class CountryController : Controller
         }
 
         int countCountryInserted = await _countryService.UploadCountryFromExcelFile(excelFile);
-        
         ViewBag.Message = $"{countCountryInserted} countries uploaded";
         
         return View();

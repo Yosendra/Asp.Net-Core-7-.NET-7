@@ -36,6 +36,7 @@ public class PersonController : Controller
     }
     #endregion
 
+
     [Route("/")]
     [ServiceFilter(typeof(PersonListActionFilter), Order = 4)]
     [ResponseHeaderFilterFactory("Key-From-Action", "Value-From-Action", 1)]
@@ -60,6 +61,7 @@ public class PersonController : Controller
         return View(persons);
     }
 
+
     public async Task<IActionResult> Create()
     {
         var countries = await _countryService.GetAllCountries();
@@ -67,6 +69,7 @@ public class PersonController : Controller
 
         return View();
     }
+
 
     [HttpPost]
     [TypeFilter(typeof(PersonCreateAndEditPostActionFilter))]
@@ -77,7 +80,8 @@ public class PersonController : Controller
         return RedirectToAction("Index", "Person");
     }
 
-    [Route("{id}")]
+
+    [HttpGet("{id}")]
     [TypeFilter(typeof(TokenResultFilter))]
     public async Task<IActionResult> Edit(Guid id)
     {
@@ -92,8 +96,8 @@ public class PersonController : Controller
         return View(model);
     }
 
-    [HttpPost]
-    [Route("{id}")]
+
+    [HttpPost("{id}")]
     [TypeFilter(typeof(TokenAuthorizationFilter))]
     public async Task<IActionResult> Edit(PersonUpdateRequest requestModel)
     {
@@ -119,7 +123,8 @@ public class PersonController : Controller
         }
     }
 
-    [Route("{id}")]
+
+    [HttpGet("{id}")]
     public async Task<IActionResult> Delete(Guid id)
     {
         PersonResponse? person = await _personService.GetPersonById(id);
@@ -129,8 +134,8 @@ public class PersonController : Controller
         return View(person);
     }
 
-    [HttpPost]
-    [Route("{id}")]
+
+    [HttpPost("{id}")]
     public async Task<IActionResult> Delete(PersonUpdateRequest updatePersonModel)
     {
         PersonResponse? person = await _personService.GetPersonById(updatePersonModel.Id);
@@ -142,6 +147,7 @@ public class PersonController : Controller
         return RedirectToAction("Index");
     }
 
+
     public async Task<IActionResult> PersonPDF()
     {
         var persons = await _personService.GetAllPersons();
@@ -152,11 +158,13 @@ public class PersonController : Controller
         };
     }
 
+
     public async Task<IActionResult> PersonCSV()
     {
         MemoryStream memoryStream = await _personService.GetPersonCSV();
         return File(memoryStream, "application/octet-stream", "person.csv");
     }
+
 
     public async Task<IActionResult> PersonExcel()
     {

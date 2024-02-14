@@ -23,16 +23,20 @@ using Serilog;
 */
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Host.UseSerilog((HostBuilderContext context, IServiceProvider service, LoggerConfiguration loggerConfiguration) =>
+builder.Host.UseSerilog((context, service, loggerConfiguration) => 
 {
     loggerConfiguration
         .ReadFrom.Configuration(context.Configuration)
         .ReadFrom.Services(service);
 });
+
+
+// Add services to the container.
 builder.Services.ConfigureServices(builder.Configuration);
-
-
 var app = builder.Build();
+
+
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseDeveloperExceptionPage();
